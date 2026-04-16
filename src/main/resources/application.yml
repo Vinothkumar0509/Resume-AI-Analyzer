@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/resume-ai
     username: postgres
-    password: postgres
+    password: vinolancy
   jpa:
     hibernate:
     ddl-auto: update
