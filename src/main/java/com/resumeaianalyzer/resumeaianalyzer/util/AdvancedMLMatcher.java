@@ -202,8 +202,8 @@ public class AdvancedMLMatcher {
      * Compares years of experience, seniority indicators, and roles
      */
     private static double calculateExperienceMatch(String resumeText, String jobDescription) {
-        Integer resumeYears = TextProcessingUtil.extractYearsOfExperience(resumeText);
-        Integer requiredYears = TextProcessingUtil.extractYearsOfExperience(jobDescription);
+        Double resumeYears = TextProcessingUtil.extractYearsOfExperience(resumeText);
+        Double requiredYears = TextProcessingUtil.extractYearsOfExperience(jobDescription);
 
         if (resumeYears == null && requiredYears == null) {
             return 50.0;
@@ -393,8 +393,8 @@ public class AdvancedMLMatcher {
         List<String> recommendations = new ArrayList<>();
 
         // Experience recommendations
-        Integer resumeYears = TextProcessingUtil.extractYearsOfExperience(resumeText);
-        Integer requiredYears = TextProcessingUtil.extractYearsOfExperience(jobDescription);
+        Double resumeYears = TextProcessingUtil.extractYearsOfExperience(resumeText);
+        Double requiredYears = TextProcessingUtil.extractYearsOfExperience(jobDescription);
 
         if (resumeYears != null && requiredYears != null && resumeYears < requiredYears) {
             recommendations.add("Gain " + (requiredYears - resumeYears) + " more years of experience in relevant roles");

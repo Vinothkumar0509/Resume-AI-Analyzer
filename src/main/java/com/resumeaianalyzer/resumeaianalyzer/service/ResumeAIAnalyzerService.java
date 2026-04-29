@@ -156,8 +156,8 @@ public class ResumeAIAnalyzerService {
         Map<String, String> experienceAndLocations = new HashMap<>();
 
         // Extract years of experience
-        Integer resumeYears = TextProcessingUtil.extractYearsOfExperience(resumeText);
-        Integer requiredYears = TextProcessingUtil.extractYearsOfExperience(jobDescription);
+        Double resumeYears = TextProcessingUtil.extractYearsOfExperience(resumeText);
+        Double requiredYears = TextProcessingUtil.extractYearsOfExperience(jobDescription);
 
         if (resumeYears != null) {
             experienceAndLocations.put("Candidate Experience", resumeYears + " years");

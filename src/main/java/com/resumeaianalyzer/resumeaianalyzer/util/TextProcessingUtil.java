@@ -14,7 +14,7 @@ public class TextProcessingUtil {
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+");
     private static final Pattern PHONE_PATTERN = Pattern.compile("\\b\\d{3}[-.]?\\d{3}[-.]?\\d{4}\\b");
-    private static final Pattern YEARS_OF_EXP_PATTERN = Pattern.compile("(\\d+)\\s*(?:[-–]\\s*(\\d+))?\\s*(?:to\\s*(\\d+))?\\s*(?:\\+)?\\s*(?:years?|yrs?|years?\\s+of\\s+exp)");
+    private static final Pattern YEARS_OF_EXP_PATTERN = Pattern.compile("(\\d+(?:\\.\\d+)?)\\s*(?:[-–]\\s*(\\d+(?:\\.\\d+)?))?\\s*(?:to\\s*(\\d+(?:\\.\\d+)?))?\\s*(?:\\+)?\\s*(?:years?|yrs?|years?\\s+of\\s+exp)");
 
     // Common technical skills database
     private static final Set<String> TECHNICAL_SKILLS = new HashSet<>(Arrays.asList(
@@ -171,26 +171,26 @@ private static boolean isLikelySkill(String term) {
      * Extract years of experience using regex and pattern matching
      * Handles ranges like "3–5 years", "3 to 5 years", "3+ years", "5 years"
      */
-    public static Integer extractYearsOfExperience(String text) {
+    public static Double extractYearsOfExperience(String text) {
         if (StringUtils.isEmpty(text)) {
             return null;
         }
 
         Matcher matcher = YEARS_OF_EXP_PATTERN.matcher(text.toLowerCase());
-        List<Integer> years = new ArrayList<>();
+        List<Double> years = new ArrayList<>();
 
         while (matcher.find()) {
             try {
                 // Extract the first number (minimum in range)
-                int firstNumber = Integer.parseInt(matcher.group(1));
+                double firstNumber = Double.parseDouble(matcher.group(1));
                 years.add(firstNumber);
 
                 // If there's a range (e.g., "3–5" or "3 to 5"), also add the second number
                 if (matcher.group(2) != null) {
-                    int secondNumber = Integer.parseInt(matcher.group(2));
+                    double secondNumber = Double.parseDouble(matcher.group(2));
                     years.add(secondNumber);
                 } else if (matcher.group(3) != null) {
-                    int secondNumber = Integer.parseInt(matcher.group(3));
+                    double secondNumber = Double.parseDouble(matcher.group(3));
                     years.add(secondNumber);
                 }
             } catch (NumberFormatException e) {

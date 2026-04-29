@@ -55,8 +55,8 @@ public class MLAlgorithmTester {
 
         // Test 5: Experience Extraction
         logger.info("5. Testing Experience Extraction");
-        Integer resumeYears = TextProcessingUtil.extractYearsOfExperience(sampleResume);
-        Integer jobYears = TextProcessingUtil.extractYearsOfExperience(sampleJobDescription);
+        Double resumeYears = TextProcessingUtil.extractYearsOfExperience(sampleResume);
+        Double jobYears = TextProcessingUtil.extractYearsOfExperience(sampleJobDescription);
         logger.info("   Resume Years of Experience: {}", resumeYears);
         logger.info("   Required Years of Experience: {}\n", jobYears);
 

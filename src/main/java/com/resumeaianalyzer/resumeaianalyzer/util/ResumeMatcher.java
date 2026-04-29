@@ -86,8 +86,8 @@ public static double calculateMatchScore(String resumeText, String jobDescriptio
      * Considers required years of experience vs candidate's experience
      */
     public static double calculateExperienceScore(String resumeText, String jobDescription) {
-        Integer resumeYears = TextProcessingUtil.extractYearsOfExperience(resumeText);
-        Integer requiredYears = TextProcessingUtil.extractYearsOfExperience(jobDescription);
+        Double resumeYears = TextProcessingUtil.extractYearsOfExperience(resumeText);
+        Double requiredYears = TextProcessingUtil.extractYearsOfExperience(jobDescription);
 
         // If no experience info found in either, assume neutral
         if (resumeYears == null && requiredYears == null) {
